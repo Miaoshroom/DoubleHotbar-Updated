@@ -76,7 +76,7 @@ public abstract class InGameHudMixin{
 		}
 	}
 	
-	@Inject(method = "extractHotbarAndDecorations", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/Gui;extractPlayerHealth(Lnet/minecraft/client/gui/GuiGraphicsExtractor;)V"))
+	@Inject(method = "extractHotbarAndDecorations", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/multiplayer/MultiPlayerGameMode;canHurtPlayer()Z"))
 	public void shiftStatusBars(GuiGraphicsExtractor graphics, DeltaTracker tickCounter, CallbackInfo info) {
 		if(DHModConfig.INSTANCE.displayDoubleHotbar && !DHModConfig.INSTANCE.disableMod && getCameraPlayer() != null && !getCameraPlayer().isSpectator()) {
 			graphics.pose().translate(0, -DHModConfig.INSTANCE.shift);
